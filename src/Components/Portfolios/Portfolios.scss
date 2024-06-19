@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700;900&display=swap");
+
+:root {
+  --primaryColor: hsl(14, 90%, 53%);
+  --primaryColorLight: hsl(14, 96%, 91%);
+  --bgColor: hsl(0, 0%, 100%);
+  --formColor: hsl(20, 42%, 87%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 10%);
+  --greText: hsl(0, 0%, 51%);
+  --inputColor: hsl(330, 12%, 97%);
+  --cardColor: hsl(300, 3%, 94%);
+
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 1.6rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: 0.938rem;
+  --smallFontSize: 0.813rem;
+  --smallestFontSize: 0.75rem;
+  --borderRadius: 3rem;
+}
+
+.portfolio {
+  .secContainer {
+    gap: 2rem;
+    .leftContent {
+      .grid {
+        .singlePortfolio {
+          gap: 1rem;
+          align-items: flex-start;
+
+          .iconDiv {
+            img {
+              height: 50px;
+              width: 50px;
+            }
+          }
+
+          .infor {
+            h4 {
+              padding-bottom: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+    .rightContent {
+      padding-top: 1rem;
+      background-size: contain;
+      img {
+        border-radius: 50%;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+//Media queries
+@media screen and (min-width: 480px) {
+  .portfolio {
+    .secContainer {
+      grid-template-columns: repeat(1, 1fr);
+      .leftContent {
+        .secHeading {
+          h3 {
+            font-size: var(--h2FontSize);
+          }
+          p {
+            font-size: var(--normalFontSize);
+            padding: 0.5rem 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .portfolio {
+    .secContainer {
+      .leftContent {
+        .grid {
+          gap: 1rem;
+          grid-template-columns: repeat(2, 1fr);
+
+          .singlePortfolio {
+            .iconDiv {
+              img {
+                height: 50px;
+                width: 50px;
+              }
+            }
+            .infor {
+              p {
+                font-size: var(--smallFontSize);
+              }
+            }
+          }
+        }
+      }
+      .rightContent {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        background-size: contain;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .portfolio {
+    .secContainer {
+      grid-template-columns: repeat(2, 1fr);
+
+      .leftContent {
+        .secHeading {
+          h3 {
+            font-size: var(--h2FontSize);
+          }
+          p {
+            font-size: var(--h3FontSize);
+          }
+        }
+        .grid {
+          grid-template-columns: repeat(1, 1fr);
+          .singlePortfolio {
+            gap: 1.5rem;
+          }
+        }
+      }
+
+      .rightContent {
+        width: 100%;
+        height: 100%;
+        img {
+          margin-top: 3rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  .portfolio {
+    .secContainer {
+      gap: 3rem;
+      .leftContent {
+        .secHeading {
+          h3 {
+            font-size: 2rem;
+          }
+          p {
+            font-size: var(--h3FontSize);
+          }
+        }
+        .grid {
+          gap: 2.5rem;
+          margin-top: 3rem;
+          .singlePortfolio {
+            gap: 2rem;
+          }
+        }
+      }
+      .rightContent {
+        img {
+          margin-top: 3.5rem;
+        }
+      }
+    }
+  }
+}
