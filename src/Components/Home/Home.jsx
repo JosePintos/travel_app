@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link, Outlet } from "react-router-dom";
 import "./Home.css";
 
 import Video from "../../Assets/video.mp4";
@@ -29,9 +30,14 @@ const Home = () => {
           Whether you're planning a relaxing beach vacation, an adventurous
           mountain trek, or a bustling city escape, we've got you covered.
         </p>
-        <button className="btn flex" data-aos="fade-up">
+        {/* <Link to={"destinations"} className="btn flex" data-aos="fade-up">
           GET STARTED <AiOutlineSwapRight className="icon" />
-        </button>
+        </Link> */}
+        <Link to={"destinations"}>
+          <button className="btn flex" data-aos="fade-up">
+            GET STARTED <AiOutlineSwapRight className="icon" />
+          </button>
+        </Link>
       </div>
 
       <div className="popularPlaces">

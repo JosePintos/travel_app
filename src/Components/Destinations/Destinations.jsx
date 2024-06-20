@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import "./Destinations.css";
+import AutocompleteField from "./AutocompleteField";
 
 import { MdLocationPin } from "react-icons/md";
 import { BsFillCreditCardFill, BsFillCalendarDateFill } from "react-icons/bs";
@@ -31,7 +32,7 @@ const Destinations = () => {
         <div className="searchField grid">
           <div className="inputField flex" data-aos="fade-up">
             <MdLocationPin className="icon" />
-            <input type="text" placeholder="Location" />
+            <AutocompleteField />
           </div>
 
           <div className="inputField flex" data-aos="fade-up">
@@ -61,7 +62,7 @@ const Destinations = () => {
           </ul>
         </div>
 
-        <div className="destinationContainer grid">
+        {/* <div className="destinationContainer grid">
           <div className="singleDestination" data-aos="fade-up">
             <div className="imgDiv" data-aos="fade-up">
               <img src={image1} alt="Destination Image" />
@@ -126,7 +127,7 @@ const Destinations = () => {
               <span className="rating">4.6</span>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
