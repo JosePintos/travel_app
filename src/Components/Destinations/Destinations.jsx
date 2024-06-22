@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Destinations.css";
-import AutocompleteField from "./AutocompleteField";
+import AutocompleteDropdown from "./AutocompleteDropdown";
+import axios from "axios";
 
 import { MdLocationPin } from "react-icons/md";
 import { BsFillCreditCardFill, BsFillCalendarDateFill } from "react-icons/bs";
@@ -13,6 +14,17 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 const Destinations = () => {
+  const [suggestions, setSuggestions] = useState([]);
+  useEffect(() => {
+    axios
+      .get("../../../database/locations.json")
+      .then((response) => {
+        setSuggestions(response.data.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
   useEffect(() => {
     Aos.init({ duration: 2000 });
   });
@@ -30,19 +42,34 @@ const Destinations = () => {
         </div>
 
         <div className="searchField grid">
-          <div className="inputField flex" data-aos="fade-up">
+          <div
+            className="inputField flex"
+            data-aos="fade-up"
+            style={{ zIndex: "1000" }}
+          >
             <MdLocationPin className="icon" />
-            <AutocompleteField />
+            <AutocompleteDropdown
+              suggestions={suggestions}
+              className="autocomplete"
+            />
           </div>
 
-          <div className="inputField flex" data-aos="fade-up">
+          <div
+            className="inputField flex"
+            data-aos="fade-up"
+            style={{ zIndex: "1" }}
+          >
             <BsFillCreditCardFill className="icon" />
             <input type="text" placeholder="Budget" />
           </div>
 
-          <div className="inputField flex" data-aos="fade-up">
+          <div
+            className="inputField flex"
+            data-aos="fade-up"
+            style={{ zIndex: "1" }}
+          >
             <BsFillCalendarDateFill className="icon" />
-            <input type="text" placeholder="Date" />
+            <input type="date" placeholder="Date" />
           </div>
 
           <button className="btn flex" data-aos="fade-up">
@@ -62,7 +89,7 @@ const Destinations = () => {
           </ul>
         </div>
 
-        {/* <div className="destinationContainer grid">
+        <div className="destinationContainer grid">
           <div className="singleDestination" data-aos="fade-up">
             <div className="imgDiv" data-aos="fade-up">
               <img src={image1} alt="Destination Image" />
@@ -127,7 +154,7 @@ const Destinations = () => {
               <span className="rating">4.6</span>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   );

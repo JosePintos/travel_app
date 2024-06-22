@@ -19,6 +19,47 @@
   --borderRadius: 3rem;
 }
 
+.no-suggestions {
+  color: #999;
+  padding: 0.5rem;
+}
+
+.suggestions {
+  border: none;
+  list-style: none;
+  max-height: 143px;
+  overflow: auto;
+  width: 90%;
+  position: absolute;
+  top: 100%;
+  left: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+.suggestions .suggestion-active {
+  background: var(--primaryColorLight);
+  color: var(--blackColor);
+  cursor: pointer;
+  font-weight: 700;
+}
+.suggestions li {
+  background-color: white;
+  padding: 0.5rem;
+}
+.suggestions li:hover {
+  background-color: var(--primaryColorLight);
+  color: var(--blackColor);
+  cursor: pointer;
+  font-weight: 700;
+}
+.suggestions li:not(:last-of-type) {
+  border-bottom: 1px solid #999;
+}
+
+.destination .secContainer {
+  margin-top: 50px;
+}
 .destination .secContainer .redText {
   color: var(--primaryColor);
   font-size: var(--smallestFontSize);
@@ -36,6 +77,8 @@
   padding: 1rem;
   border-radius: var(--borderRadius);
   gap: 0.5rem;
+  width: 100%;
+  position: relative;
 }
 .destination .secContainer .searchField .inputField input {
   background: transparent;
@@ -108,7 +151,8 @@
   padding-bottom: 0.3rem;
   font-size: var(--h2FontSize);
 }
-.destination .secContainer .destinationContainer .singleDestination .descInfo .text .flex, .destination .secContainer .destinationContainer .singleDestination .descInfo .text .icon {
+.destination .secContainer .destinationContainer .singleDestination .descInfo .text .flex,
+.destination .secContainer .destinationContainer .singleDestination .descInfo .text .icon {
   font-size: var(--normalFontSize);
 }
 .destination .secContainer .destinationContainer .singleDestination .rating {
