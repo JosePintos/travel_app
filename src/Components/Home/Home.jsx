@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 import Video from "../../Assets/video.mp4";
@@ -14,6 +14,10 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 
 const Home = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/destinations");
+  };
   useEffect(() => {
     Aos.init({ duration: 2000 });
   });
@@ -33,11 +37,9 @@ const Home = () => {
         {/* <Link to={"destinations"} className="btn flex" data-aos="fade-up">
           GET STARTED <AiOutlineSwapRight className="icon" />
         </Link> */}
-        <Link to={"destinations"}>
-          <button className="btn flex" data-aos="fade-up">
-            GET STARTED <AiOutlineSwapRight className="icon" />
-          </button>
-        </Link>
+        <button className="btn flex" data-aos="fade-up" onClick={handleClick}>
+          GET STARTED <AiOutlineSwapRight className="icon" />
+        </button>
       </div>
 
       <div className="popularPlaces">

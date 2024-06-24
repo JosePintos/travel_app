@@ -88,6 +88,7 @@
 }
 .destination .secContainer .searchField .inputField .icon {
   color: var(--blackColor);
+  cursor: auto;
 }
 .destination .secContainer .searchField .btn {
   gap: 0.5rem;

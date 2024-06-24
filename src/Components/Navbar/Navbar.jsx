@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { BiLogoMediumOld } from "react-icons/bi";
 import { AiFillCloseCircle } from "react-icons/ai";
@@ -18,8 +19,10 @@ const Navbar = () => {
   return (
     <div className="navBar">
       <div className="logoDiv">
-        <BiLogoMediumOld className="icon" />
-        <span>OU-Trips</span>
+        <Link to={"/"}>
+          <BiLogoMediumOld className="icon" />
+          <span>ine-Trips</span>
+        </Link>
       </div>
       <div className={navBar}>
         <ul>

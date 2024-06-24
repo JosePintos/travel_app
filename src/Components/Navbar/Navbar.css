@@ -41,6 +41,7 @@
   color: var(--blackColor);
   font-size: var(--h3FontSize);
   justify-content: center;
+  cursor: pointer;
 }
 @media screen and (max-width: 767px) {
   .navBar .menu {
