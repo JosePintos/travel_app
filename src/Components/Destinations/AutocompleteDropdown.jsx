@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./Destinations.css";
 import axios from "axios";
 
-const AutocompleteDropdown = ({ suggestions }) => {
+const AutocompleteDropdown = ({ suggestions, setSelection }) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -27,6 +27,7 @@ const AutocompleteDropdown = ({ suggestions }) => {
     setActiveSuggestionIndex(0);
     setInput(e.target.innerText);
     setShowSuggestions(false);
+    setSelection({ location: e.target.innerText });
   };
 
   const handleKeyDown = (e) => {
@@ -42,10 +43,13 @@ const AutocompleteDropdown = ({ suggestions }) => {
       }
     } else if (e.key === "Enter") {
       e.preventDefault();
-      setInput(filteredSuggestions[activeSuggestionIndex].capital);
+      setInput(filteredSuggestions[activeSuggestionIndex].name);
       setFilteredSuggestions([]);
       setActiveSuggestionIndex(0);
       setShowSuggestions(false);
+      setSelection({
+        location: filteredSuggestions[activeSuggestionIndex].name,
+      });
     }
   };
 
@@ -63,7 +67,7 @@ const AutocompleteDropdown = ({ suggestions }) => {
               key={suggestion.name}
               onClick={handleClick}
             >
-              {suggestion.capital}, {suggestion.name}
+              {suggestion.name}
             </li>
           );
         })}

@@ -1,0 +1,62 @@
+[
+  {
+    "country": "Argentina",
+    "name": "Puerto Iguazú",
+    "rating": 4.7,
+    "descripcion": "Las Cataratas del Iguazú son, indiscutiblemente, el atractivo turístico por excelencia en Puerto Iguazú. Sin embargo, esta ciudad tiene otros imperdibles para quienes visiten el destino.",
+    "detalle": null,
+    "img": "../../../database/images/puerto_iguazu.png",
+    "activity": null,
+    "id": 1,
+    "type": "nature",
+    "budget": "normal"
+  },
+  {
+    "country": "Argentina",
+    "name": "Bariloche",
+    "rating": 4.5,
+    "descripcion": "Bariloche es una ciudad ubicada entre bosques milenarios, montañas cubiertas de nieve y lagos cristalinos, en la provincia de Río Negro, Argentina. Se trata de una postal de nuestra Patagonia. Una ciudad anfitriona por excelencia, enmarcada por algunas de las bellezas naturales más importantes del país.",
+    "detalle": null,
+    "img": "../../../database/images/bariloche.jpg",
+    "activity": null,
+    "id": 2,
+    "type": "snow",
+    "budget": "expensive"
+  },
+  {
+    "country": "Argentina",
+    "name": "Mendoza",
+    "rating": 4.0,
+    "descripcion": "La provincia de Mendoza te espera para que disfrutes de un viaje inolvidable. Vení a conocer bodegas, ciudades, montañas y los hermosos paisajes mendocinos.",
+    "detalle": null,
+    "img": "../../../database/images/mendoza.jpg",
+    "activity": null,
+    "id": 3,
+    "type": "mountain",
+    "budget": "affordable"
+  },
+  {
+    "country": "Argentina",
+    "name": "Córdoba",
+    "rating": 4.5,
+    "descripcion": "Enclavada en el corazón de Argentina, Córdoba combina la esencia de la tradición con la energía de la modernidad. En esta tierra de infinitos matices, encontrarás una rica herencia cultural y arquitectónica que se entrelaza con una diversidad de paisajes sorprendentes.",
+    "detalle": null,
+    "img": "../../../database/images/cordoba.jpg",
+    "activity": null,
+    "id": 4,
+    "type": "nature",
+    "budget": "normal"
+  },
+  {
+    "country": "Argentina",
+    "name": "Salta",
+    "rating": 4.2,
+    "descripcion": "La provincia de Salta posee una variedad de paisajes que asombra a todos los visitantes. La ciudad capital con edificios coloniales, museos, iglesias y mercados y también el interior con pueblos tranquilos y hospitalarios.",
+    "detalle": null,
+    "img": "../../../database/images/salta.jpg",
+    "activity": null,
+    "id": 5,
+    "type": "park",
+    "budget": "affordable"
+  }
+]
