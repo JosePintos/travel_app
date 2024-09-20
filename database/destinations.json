@@ -8,8 +8,9 @@
     "img": "../../../database/images/puerto_iguazu.png",
     "activity": null,
     "id": 1,
-    "type": "nature",
-    "budget": "normal"
+    "setting": "nature",
+    "budget": "normal",
+    "type": "tourist"
   },
   {
     "country": "Argentina",
@@ -20,8 +21,9 @@
     "img": "../../../database/images/bariloche.jpg",
     "activity": null,
     "id": 2,
-    "type": "snow",
-    "budget": "expensive"
+    "setting": "snow",
+    "budget": "expensive",
+    "type": "tourist"
   },
   {
     "country": "Argentina",
@@ -32,8 +34,9 @@
     "img": "../../../database/images/mendoza.jpg",
     "activity": null,
     "id": 3,
-    "type": "mountain",
-    "budget": "affordable"
+    "setting": "mountain",
+    "budget": "affordable",
+    "type": "region"
   },
   {
     "country": "Argentina",
@@ -44,8 +47,9 @@
     "img": "../../../database/images/cordoba.jpg",
     "activity": null,
     "id": 4,
-    "type": "nature",
-    "budget": "normal"
+    "setting": "nature",
+    "budget": "normal",
+    "type": "city"
   },
   {
     "country": "Argentina",
@@ -56,7 +60,8 @@
     "img": "../../../database/images/salta.jpg",
     "activity": null,
     "id": 5,
-    "type": "park",
-    "budget": "affordable"
+    "setting": "park",
+    "budget": "affordable",
+    "type": "region"
   }
 ]

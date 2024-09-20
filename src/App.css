@@ -62,7 +62,8 @@ li {
   cursor: pointer;
 }
 
-image, video {
+image,
+video {
   height: auto;
   width: 100%;
 }

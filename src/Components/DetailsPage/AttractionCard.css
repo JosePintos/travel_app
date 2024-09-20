@@ -1,0 +1,163 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700;900&display=swap");
+:root {
+  --primaryColor: hsl(14, 90%, 53%);
+  --primaryColorLight: hsl(14, 96%, 91%);
+  --bgColor: hsl(0, 0%, 100%);
+  --formColor: hsl(20, 42%, 87%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 10%);
+  --greText: hsl(0, 0%, 51%);
+  --inputColor: hsl(330, 12%, 97%);
+  --cardColor: hsl(300, 3%, 94%);
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 1.6rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: 0.938rem;
+  --smallFontSize: 0.813rem;
+  --smallestFontSize: 0.75rem;
+  --borderRadius: 3rem;
+}
+
+.card {
+  position: relative;
+  border-top: 1px solid var(--formColor);
+  border-radius: unset;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+  cursor: pointer;
+}
+.card .card-content {
+  position: relative;
+  margin: 0;
+  padding: 0;
+}
+.card .card-content .card-image {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+.card .card-content .card-image img {
+  height: 144px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 3px;
+  width: 100%;
+}
+.card .card-content .card-info {
+  padding: 0;
+  flex: 1 1 60%;
+  min-width: 60%;
+  min-height: 1px;
+}
+.card .card-content .card-info h3 {
+  font-size: var(--h2FontSize);
+  line-height: 1.38rem;
+  height: 2.76rem;
+  overflow: hidden;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 1rem;
+}
+.card .card-content .card-info h3:hover {
+  text-decoration: underline;
+}
+.card .card-content .card-info .text-info {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: relative;
+}
+.card .card-content .card-info .text-info .text-description {
+  position: relative;
+  font-size: var(--smallFontSize);
+  font-weight: 400;
+  letter-spacing: -0.2px;
+  width: 0;
+  min-width: 100%;
+  white-space: normal;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  max-height: 5.0625rem;
+}
+.card .card-content .card-info .text-info .text-description .learn-more {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  background-color: transparent;
+  background-image: linear-gradient(90deg, hsla(0, 0%, 100%, 0), #fff 10px);
+  padding-left: 12px;
+  color: var(--primaryColorLight);
+  text-decoration: underline;
+}
+.card .card-content .card-info .text-info .text-description .learn-more::before {
+  display: inline-block;
+  color: var(--primaryColorLight);
+  content: "…";
+  cursor: text;
+  margin-right: 4px;
+}
+.card .card-content .card-info .text-info .text-description .learn-more::after {
+  content: " ";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding-left: 5rem;
+  background: -moz-linear-gradient(to right, hsla(0, 0%, 100%, 0), var(--white) 2.5rem);
+}
+
+@media screen and (min-width: 768px) {
+  .card .card-content:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+}
+@media screen and (min-width: 995px) {
+  .card {
+    border: none;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-right: 2.1rem;
+    width: auto;
+    padding: 0;
+  }
+  .card .card-content {
+    border: none;
+    flex-direction: column;
+  }
+  .card .card-content .card-image {
+    flex: 0 0 100%;
+    max-width: 100%;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .card .card-content .card-image img {
+    height: 200px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .card .card-content .card-info {
+    flex: 0 0 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+  .card .card-content .card-info .card-title {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    margin-top: 1rem !important;
+  }
+  .card .card-content .card-info .text-info {
+    padding-bottom: 2rem !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+  .card .card-content .card-info .text-info .text-description .description-body {
+    font-size: var(--normalFontSize);
+  }
+  .card .card-content .card-info .text-info .text-description .learn-more {
+    font-size: var(--normalFontSize);
+    top: 2.2rem;
+  }
+}/*# sourceMappingURL=AttractionCard.css.map */

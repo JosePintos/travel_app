@@ -1,0 +1,76 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 2px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+
+    h2 {
+      margin-right: 2rem !important;
+      margin-left: 2rem !important;
+      padding-bottom: 1rem !important;
+    }
+
+    p {
+      margin-top: 10px;
+      color: #555;
+      font-size: 1rem;
+      max-height: calc(100vh - 64px - 7.5rem);
+      overflow-y: auto;
+      min-height: 100px;
+      margin-right: 1rem !important;
+      margin-left: 1rem !important;
+      padding-bottom: 1rem !important;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #333;
+    }
+  }
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}

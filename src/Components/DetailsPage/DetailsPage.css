@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;700;900&display=swap");
+:root {
+  --primaryColor: hsl(14, 90%, 53%);
+  --primaryColorLight: hsl(14, 96%, 91%);
+  --bgColor: hsl(0, 0%, 100%);
+  --formColor: hsl(20, 42%, 87%);
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 10%);
+  --greText: hsl(0, 0%, 51%);
+  --inputColor: hsl(330, 12%, 97%);
+  --cardColor: hsl(300, 3%, 94%);
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 1.6rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: 0.938rem;
+  --smallFontSize: 0.813rem;
+  --smallestFontSize: 0.75rem;
+  --borderRadius: 3rem;
+}
+
+.detailsPage {
+  margin: 0 auto;
+  padding-top: 100px;
+}
+.detailsPage h3 {
+  font-size: var(--h1FontSize);
+  line-height: 30px;
+  text-align: left;
+}
+.detailsPage .headerContainer {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+.detailsPage .headerContainer .heroImage {
+  width: 100%;
+  min-height: min(20vw, 325px);
+  aspect-ratio: auto 1600/560;
+  -o-object-fit: cover;
+  object-fit: cover;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("C:/Users/admin/Desktop/project 2/travel_booking_project/src/Assets/banner.jpg");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 0 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.48);
+}
+.detailsPage .headerContainer .heroImage .hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: var(--h2FontSize);
+}
+.detailsPage .contentContainer .overviewWrapper {
+  position: relative;
+  height: 100%;
+  flex-grow: 1;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+.detailsPage .contentContainer .overviewWrapper .overview {
+  padding-left: 0.5rem;
+  position: relative;
+  margin: 0 10%;
+}
+.detailsPage .contentContainer .overviewWrapper .overview .textSpan {
+  padding: 20px;
+}
+.detailsPage .contentContainer .overviewWrapper .overview .textSpan h3 {
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  width: 100vw;
+  text-align: center;
+  font-size: var(--h1FontSize);
+  line-height: 30px;
+}
+.detailsPage .contentContainer .overviewWrapper .overview p {
+  font-size: var(--normalFontSize);
+  color: var(--blackColor);
+  padding-bottom: 1.5rem;
+}
+.detailsPage .contentContainer .horizontalLineWrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 10px 0;
+  background: white;
+  margin-top: 16px;
+  margin-bottom: 26px;
+}
+.detailsPage .contentContainer .horizontalLineWrapper .horizontalLine {
+  border-top: 1px solid var(--primaryColorLight);
+  width: 80px;
+  border-bottom: 3px solid var(--primaryColor);
+  margin: 0 auto 2rem;
+}
+.detailsPage .contentContainer .popularAttractions h3 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+}
+.detailsPage .contentContainer .popularAttractions .cardsContainer {
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding-left: 0.5rem;
+}
+
+@media screen and (min-width: 995px) {
+  .detailsPage .headerContainer .heroImage {
+    max-height: min(35vw, 325px);
+  }
+  .detailsPage .headerContainer .heroImage .hero-text {
+    font-size: var(--biggestFontSize);
+  }
+  .detailsPage .headerContainer .heroImage .hero-text p {
+    font-size: 1.25rem !important;
+  }
+  .detailsPage .headerContainer .heroImage .hero-text h1 {
+    font-size: 5rem;
+  }
+  .detailsPage .overviewWrapper {
+    max-width: 1360px;
+  }
+  .detailsPage .overviewWrapper .overview {
+    display: block;
+    padding-top: 1rem !important;
+  }
+  .detailsPage .overviewWrapper .overview .textSpan h3 {
+    padding-bottom: 1rem !important;
+    font-size: 2rem !important;
+    letter-spacing: -1px;
+  }
+  .detailsPage .overviewWrapper .overview p {
+    font-size: var(--h3FontSize) !important;
+  }
+  .detailsPage .popularAttractionsWrapper {
+    background-color: #f5f5f5;
+    padding: 0 1.5rem;
+    width: 100%;
+  }
+  .detailsPage .popularAttractionsWrapper .popularAttractions {
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: center !important;
+    max-width: 1360px;
+  }
+  .detailsPage .popularAttractionsWrapper .popularAttractions .cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 1rem;
+  }
+}
+@media screen and (max-width: 1625px) {
+  .detailsPage .headerContainer .heroImage {
+    max-height: min(35vw, 325px);
+  }
+}/*# sourceMappingURL=DetailsPage.css.map */

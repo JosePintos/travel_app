@@ -5,11 +5,13 @@ import { useState } from "react";
 const filterResults = (data, filters) => {
   //aqui deberia agregar despues los otros filtros dentro del obj filters
   //por ahora solo filtra por location
+  console.log(filters);
   return data.filter(
     (x) =>
       x.country == filters.location &&
       (x.type == filters.type || filters.type == "all") &&
-      x.budget == filters.budget
+      (x.rating >= filters.rating || filters.rating == "all") &&
+      (x.budget == filters.budget || filters.budget == "all")
   );
 };
 

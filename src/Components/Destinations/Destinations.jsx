@@ -13,11 +13,15 @@ import "aos/dist/aos.css";
 
 const Destinations = () => {
   const [filters, setFilters] = useState({});
-  const [tempFilters, setTempFilters] = useState({});
   const [suggestions, setSuggestions] = useState([]);
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+
+  const [tempFilters, setTempFilters] = useState({
+    type: "all",
+    rating: "all",
+    budget: "all",
+  });
 
   const [isFilterButtonActive, setIsFilterButtonActive] = useState(0);
   const filterButtons = ["All", "Mountain", "Beach", "Nature", "Snow", "Park"];
@@ -67,6 +71,16 @@ const Destinations = () => {
     updateFilters({ budget: e.target.value });
   };
 
+  const handleTypeFilter = (e) => {
+    e.preventDefault();
+    updateFilters({ type: e.target.value });
+  };
+
+  const handleRatingFilter = (e) => {
+    e.preventDefault();
+    updateFilters({ rating: e.target.value });
+  };
+
   return (
     <div className="destination section container">
       <div className="secContainer">
@@ -80,34 +94,34 @@ const Destinations = () => {
           </p>
         </div>
 
-        <div className="searchContainer">
-          <div className="secFilters">
-            <select id="type-filter">
-              <option value="">All Types</option>
+        <div className="searchContainer" data-aos="fade-up">
+          <div className="secFilters" data-aos="fade-up">
+            <select id="type-filter" onChange={handleTypeFilter}>
+              <option value="all">All Types</option>
               <option value="city">City</option>
               <option value="region">Region</option>
-              <option value="tourist_spot">Tourist Spot</option>
+              <option value="tourist">Tourist Spot</option>
             </select>
-            <select id="price-filter">
-              <option value="">All Prices</option>
-              <option value="budget">Budget</option>
-              <option value="mid-range">Mid-range</option>
-              <option value="luxury">Luxury</option>
+            <select id="price-filter" onChange={handleBudgetFilter}>
+              <option value="all">All Prices</option>
+              <option value="affordable">Budget</option>
+              <option value="normal">Mid-range</option>
+              <option value="expensive">Luxury</option>
             </select>
             <select id="duration-filter">
-              <option value="">All Durations</option>
+              <option value="all">All Durations</option>
               <option value="short">1-3 days</option>
               <option value="medium">4-7 days</option>
               <option value="long">7+ days</option>
             </select>
-            <select id="rating-filter">
-              <option value="">All Ratings</option>
+            <select id="rating-filter" onChange={handleRatingFilter}>
+              <option value="all">All Ratings</option>
               <option value="4">4 stars & up</option>
               <option value="3">3 stars & up</option>
               <option value="2">2 stars & up</option>
             </select>
             <select id="season-filter">
-              <option value="">All Seasons</option>
+              <option value="all">All Seasons</option>
               <option value="spring">Spring</option>
               <option value="summer">Summer</option>
               <option value="autumn">Autumn</option>

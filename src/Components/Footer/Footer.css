@@ -21,7 +21,6 @@
 
 .footer {
   background: var(--primaryColorLight);
-  padding: 2rem 0;
 }
 .footer .secContainer {
   gap: 1.5rem;
