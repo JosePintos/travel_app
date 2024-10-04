@@ -1,9 +1,19 @@
 import "./Destinations.css";
+import { useNavigate } from "react-router-dom";
 import { TiLocation } from "react-icons/ti";
 
 const DestinationCard = ({ destination }) => {
+  const navigate = useNavigate();
+
+  const handleClick = (slug) => {
+    navigate(`/details/${slug}`);
+  };
+
   return (
-    <div className="singleDestination">
+    <div
+      className="singleDestination"
+      onClick={() => handleClick(destination.slug)}
+    >
       <div className="imgDiv">
         <img
           src={destination.img}

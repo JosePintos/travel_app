@@ -11,11 +11,44 @@ import { BiSearchAlt } from "react-icons/bi";
 import Aos from "aos";
 import "aos/dist/aos.css";
 
+const touristCountries = [
+  "United States",
+  "France",
+  "Spain",
+  "Italy",
+  "China",
+  "United Kingdom",
+  "Mexico",
+  "Thailand",
+  "Turkey",
+  "Germany",
+  "Japan",
+  "Greece",
+  "Australia",
+  "Canada",
+  "Brazil",
+  "Netherlands",
+  "Egypt",
+  "India",
+  "Argentina",
+  "South Africa",
+  "Malaysia",
+  "Portugal",
+  "United Arab Emirates",
+  "Indonesia",
+  "Vietnam",
+  "Switzerland",
+  "Austria",
+  "Russia",
+  "Morocco",
+  "South Korea",
+];
+
 const Destinations = () => {
   const [filters, setFilters] = useState({});
-  const [suggestions, setSuggestions] = useState([]);
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const [tempFilters, setTempFilters] = useState({
     type: "all",
@@ -29,12 +62,12 @@ const Destinations = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        console.log(filters);
         setLoading(true);
-        const [countries, destinations] = await Promise.all([
-          axios.get("../../../database/locations.json"),
-          axios.get("../../../database/destinations.json"),
-        ]);
-        setSuggestions(countries.data.data);
+        const destinations = await axios.get(
+          "http://localhost:3000/destinations",
+          { params: filters }
+        );
         setResults(destinations.data);
       } catch (error) {
         setError(error);
@@ -44,7 +77,7 @@ const Destinations = () => {
     };
 
     fetchData();
-  }, []);
+  }, [filters]);
 
   useEffect(() => {
     Aos.init({ duration: 2000 });
@@ -136,7 +169,7 @@ const Destinations = () => {
             >
               <MdLocationPin className="icon" />
               <AutocompleteDropdown
-                suggestions={suggestions}
+                suggestions={touristCountries}
                 className="autocomplete"
                 setSelection={updateFilters}
               />
@@ -167,10 +200,14 @@ const Destinations = () => {
           </ul>
         </div>
 
-        {loading ? (
-          <em>Loading...</em>
+        {filters.location ? (
+          loading ? (
+            <em>Loading...</em>
+          ) : (
+            <SearchResults results={results} />
+          )
         ) : (
-          <SearchResults results={results} filters={filters} />
+          <div></div>
         )}
       </div>
     </div>

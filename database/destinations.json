@@ -10,7 +10,8 @@
     "id": 1,
     "setting": "nature",
     "budget": "normal",
-    "type": "tourist"
+    "type": "tourist",
+    "slug": "puerto-iguazú-arg"
   },
   {
     "country": "Argentina",
@@ -23,7 +24,8 @@
     "id": 2,
     "setting": "snow",
     "budget": "expensive",
-    "type": "tourist"
+    "type": "tourist",
+    "slug": "bariloche-arg"
   },
   {
     "country": "Argentina",
@@ -36,7 +38,8 @@
     "id": 3,
     "setting": "mountain",
     "budget": "affordable",
-    "type": "region"
+    "type": "region",
+    "slug": "mendoza-arg"
   },
   {
     "country": "Argentina",
@@ -49,7 +52,8 @@
     "id": 4,
     "setting": "nature",
     "budget": "normal",
-    "type": "city"
+    "type": "city",
+    "slug": "córdoba-arg"
   },
   {
     "country": "Argentina",
@@ -62,6 +66,7 @@
     "id": 5,
     "setting": "park",
     "budget": "affordable",
-    "type": "region"
+    "type": "region",
+    "slug": "salta-arg"
   }
 ]

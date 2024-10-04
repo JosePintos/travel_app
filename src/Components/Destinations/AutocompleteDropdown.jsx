@@ -1,22 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./Destinations.css";
-import axios from "axios";
 
 const AutocompleteDropdown = ({ suggestions, setSelection }) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [input, setInput] = useState("");
+  const [inputValue, setInputValue] = useState("");
+  console.log(suggestions);
+  const activeSuggestionRef = useRef(null);
 
   const handleChange = (e) => {
     const userInput = e.target.value;
-    const unLinked = suggestions.filter(
+    const unLinked = suggestions?.filter(
       (suggestion) =>
-        suggestion.capital.toLowerCase().indexOf(userInput.toLowerCase()) >
-          -1 ||
-        suggestion.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1
+        suggestion?.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     );
-    setInput(userInput);
+    setInputValue(userInput);
     setFilteredSuggestions(unLinked);
     setActiveSuggestionIndex(0);
     setShowSuggestions(true);
@@ -25,7 +24,7 @@ const AutocompleteDropdown = ({ suggestions, setSelection }) => {
   const handleClick = (e) => {
     setFilteredSuggestions([]);
     setActiveSuggestionIndex(0);
-    setInput(e.target.innerText);
+    setInputValue(e.target.innerText);
     setShowSuggestions(false);
     setSelection({ location: e.target.innerText });
   };
@@ -43,15 +42,32 @@ const AutocompleteDropdown = ({ suggestions, setSelection }) => {
       }
     } else if (e.key === "Enter") {
       e.preventDefault();
-      setInput(filteredSuggestions[activeSuggestionIndex].name);
-      setFilteredSuggestions([]);
-      setActiveSuggestionIndex(0);
-      setShowSuggestions(false);
-      setSelection({
-        location: filteredSuggestions[activeSuggestionIndex].name,
-      });
+
+      if (
+        filteredSuggestions.length > 0 &&
+        activeSuggestionIndex >= 0 &&
+        activeSuggestionIndex < filteredSuggestions.length
+      ) {
+        const selectedSuggestion = filteredSuggestions[activeSuggestionIndex];
+        setInputValue(selectedSuggestion);
+        setFilteredSuggestions([]);
+        setActiveSuggestionIndex(0);
+        setShowSuggestions(false);
+        setSelection({
+          location: selectedSuggestion,
+        });
+      }
     }
   };
+
+  useEffect(() => {
+    if (activeSuggestionRef.current) {
+      activeSuggestionRef.current.scrollIntoView({
+        behavior: "instant",
+        block: "nearest",
+      });
+    }
+  }, [activeSuggestionIndex]);
 
   const SuggestionsListComponent = () => {
     return filteredSuggestions.length ? (
@@ -64,10 +80,11 @@ const AutocompleteDropdown = ({ suggestions, setSelection }) => {
           return (
             <li
               className={className}
-              key={suggestion.name}
+              key={suggestion}
               onClick={handleClick}
+              ref={index === activeSuggestionIndex ? activeSuggestionRef : null}
             >
-              {suggestion.name}
+              {suggestion}
             </li>
           );
         })}
@@ -84,11 +101,11 @@ const AutocompleteDropdown = ({ suggestions, setSelection }) => {
       <input
         type="text"
         onChange={handleChange}
-        value={input}
+        value={inputValue}
         onKeyDown={handleKeyDown}
         placeholder="Location"
       />
-      {showSuggestions && input && <SuggestionsListComponent />}
+      {showSuggestions && inputValue && <SuggestionsListComponent />}
     </>
   );
 };

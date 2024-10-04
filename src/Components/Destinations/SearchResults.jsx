@@ -2,34 +2,15 @@ import "./Destinations.css";
 import DestinationCard from "./DestinationCard";
 import { useState } from "react";
 
-const filterResults = (data, filters) => {
-  //aqui deberia agregar despues los otros filtros dentro del obj filters
-  //por ahora solo filtra por location
-  console.log(filters);
-  return data.filter(
-    (x) =>
-      x.country == filters.location &&
-      (x.type == filters.type || filters.type == "all") &&
-      (x.rating >= filters.rating || filters.rating == "all") &&
-      (x.budget == filters.budget || filters.budget == "all")
-  );
-};
-
-const SearchResults = ({ results, filters }) => {
-  const filteredData = filterResults(results, filters);
-
-  if (!Object.keys(filters).length) {
-    return <div></div>;
-  }
-
+const SearchResults = ({ results }) => {
   return (
     <div className="destinationContainer grid" data-aos="fade-up">
-      {!filteredData.length ? (
+      {!results.length ? (
         <em>
           <strong>...No results found.</strong>
         </em>
       ) : (
-        filteredData.map((res) => <DestinationCard destination={res} />)
+        results.map((res) => <DestinationCard destination={res} />)
       )}
     </div>
   );

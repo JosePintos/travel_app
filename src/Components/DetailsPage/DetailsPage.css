@@ -29,20 +29,15 @@
   text-align: left;
 }
 .detailsPage .headerContainer {
-  width: 100vw;
+  width: 100%;
   position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
 }
 .detailsPage .headerContainer .heroImage {
-  width: 100%;
   min-height: min(20vw, 325px);
   aspect-ratio: auto 1600/560;
   -o-object-fit: cover;
   object-fit: cover;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("C:/Users/admin/Desktop/project 2/travel_booking_project/src/Assets/banner.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -75,13 +70,11 @@
   margin: 0 10%;
 }
 .detailsPage .contentContainer .overviewWrapper .overview .textSpan {
+  display: flex;
   padding: 20px;
+  justify-content: center;
 }
 .detailsPage .contentContainer .overviewWrapper .overview .textSpan h3 {
-  position: relative;
-  left: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
   width: 100vw;
   text-align: center;
   font-size: var(--h1FontSize);
@@ -118,9 +111,39 @@
   flex-wrap: wrap;
   padding-left: 0.5rem;
 }
+.detailsPage .contentContainer .departures {
+  margin-bottom: 100px;
+  position: relative;
+  margin-left: -20px;
+  margin-right: 20px;
+}
+.detailsPage .contentContainer .departures::after {
+  clear: both;
+}
+.detailsPage .contentContainer .departures::before {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.detailsPage .contentContainer .departures .departuresContainer {
+  min-height: 1px;
+  margin-left: 20px;
+}
+.detailsPage .contentContainer .departures .departuresContainer h2 {
+  margin: 14px 0;
+  line-height: 1.1em;
+  text-align: left;
+  font-size: 26px;
+  margin-bottom: 20px;
+  margin-right: 2em;
+  display: inline-block;
+  color: #4c4f56;
+  text-rendering: optimizelegibility;
+}
 
 @media screen and (min-width: 995px) {
   .detailsPage .headerContainer .heroImage {
+    width: 100%;
     max-height: min(35vw, 325px);
   }
   .detailsPage .headerContainer .heroImage .hero-text {
@@ -164,8 +187,23 @@
     row-gap: 1rem;
   }
 }
+@media screen and (max-width: 768px) {
+  .detailsPage .contentContainer .departures {
+    margin-left: 0;
+  }
+}
 @media screen and (max-width: 1625px) {
   .detailsPage .headerContainer .heroImage {
     max-height: min(35vw, 325px);
+  }
+}
+@media screen and (min-width: 900px) {
+  .contentContainer .departures {
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+  }
+  .contentContainer .departures .departuresContainer {
+    width: 75%;
   }
 }/*# sourceMappingURL=DetailsPage.css.map */
