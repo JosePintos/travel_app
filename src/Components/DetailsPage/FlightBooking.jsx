@@ -41,7 +41,7 @@ const FlightBooking = () => {
         //   {
         //     headers: {
         //       "X-RapidAPI-Key":
-        //         "f583db4447mshd11cf3027941022p10e157jsn5daa1cf42024",
+        //         "",
         //       "X-RapidAPI-Host": "sky-scanner3.p.rapidapi.com",
         //     },
         //     params: {

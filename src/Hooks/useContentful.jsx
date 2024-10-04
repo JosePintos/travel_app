@@ -1,9 +1,12 @@
 import { createClient } from "contentful";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const useContentful = () => {
   const client = createClient({
-    space: "czpsw3qwiekm",
-    accessToken: "Abo_PJgb0r-wJTcOmIozVi73C9sthVIV8TUgH_Jn1-o",
+    space: process.env.CONTENTFUL_SPACE,
+    accessToken: process.env.CONTENTFUL_TOKEN,
   });
 
   const getDestinationDetails = async (destinationName) => {
