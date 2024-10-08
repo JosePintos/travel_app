@@ -9,7 +9,7 @@ const DetailsPage = () => {
   const { getDestinationDetails } = useContentful();
   const [destinationDetails, setDestinationDetails] = useState({});
 
-  const { slug } = useParams();
+  const { slug, cityCode } = useParams();
   const destinationName = slug.slice(0, slug.length - 4).replace(/-/g, " ");
 
   useEffect(() => {
@@ -30,14 +30,14 @@ const DetailsPage = () => {
         <div
           className="heroImage"
           style={{
-            backgroundImage: destinationDetails.heroImage
-              ? `url(${destinationDetails.heroImage?.fields.file.url})`
+            backgroundImage: destinationDetails?.heroImage
+              ? `url(${destinationDetails?.heroImage})`
               : "none", // Set a default value if the image is not available
           }}
         >
           <div class="hero-text">
             <p>Things to do in</p>
-            <h1>{destinationDetails.destinationName}</h1>
+            <h1>{destinationDetails?.destinationName}</h1>
           </div>
         </div>
       </div>
@@ -48,7 +48,7 @@ const DetailsPage = () => {
             <div className="textSpan">
               <h3>Bucket list: cross than one out</h3>
             </div>
-            <p>{destinationDetails.description}</p>
+            <p>{destinationDetails?.description}</p>
           </div>
         </section>
         <div className="horizontalLineWrapper">
@@ -58,14 +58,12 @@ const DetailsPage = () => {
           <div className="popularAttractions">
             <h3>Popular Attractions</h3>
             <div className="cardsContainer">
-              {destinationDetails.attractions?.map((attraction, index) => (
+              {destinationDetails?.attractions?.map((attraction, index) => (
                 <AttractionCard
                   key={index}
-                  title={attraction?.fields?.attractionTitle}
-                  description={attraction?.fields?.attractionText}
-                  imageUrl={
-                    attraction?.fields?.attractionImage?.fields?.file.url
-                  }
+                  title={attraction?.attractionTitle}
+                  description={attraction?.attractionText}
+                  imageUrl={attraction?.attractionImage}
                 />
               ))}
             </div>
@@ -76,8 +74,8 @@ const DetailsPage = () => {
         </div>
         <section className="departures">
           <div className="departuresContainer">
-            <h2 className="de">Departures</h2>
-            <FlightBooking />
+            <h2 className="de">Departures For This Month</h2>
+            <FlightBooking destCode={cityCode} />
           </div>
         </section>
       </div>

@@ -19,7 +19,11 @@
   --borderRadius: 3rem;
 }
 
-.no-suggestions {
+.autocompleteWrapper {
+  position: relative;
+  width: auto;
+}
+.autocompleteWrapper .no-suggestions {
   color: #999;
   padding: 0.5rem;
   position: absolute;
@@ -29,8 +33,7 @@
   border-radius: 0 0 10px 10px;
   width: 90%;
 }
-
-.suggestions {
+.autocompleteWrapper .suggestions {
   border: none;
   list-style: none;
   max-height: 143px;
@@ -43,23 +46,23 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
-.suggestions .suggestion-active {
+.autocompleteWrapper .suggestions .suggestion-active {
   background: var(--primaryColorLight);
   color: var(--blackColor);
   cursor: pointer;
   font-weight: 700;
 }
-.suggestions li {
+.autocompleteWrapper .suggestions li {
   background-color: white;
   padding: 0.5rem;
 }
-.suggestions li:hover {
+.autocompleteWrapper .suggestions li:hover {
   background-color: var(--primaryColorLight);
   color: var(--blackColor);
   cursor: pointer;
   font-weight: 700;
 }
-.suggestions li:not(:last-of-type) {
+.autocompleteWrapper .suggestions li:not(:last-of-type) {
   border-bottom: 1px solid #999;
 }
 

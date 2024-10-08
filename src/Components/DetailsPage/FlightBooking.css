@@ -69,6 +69,7 @@
   border: 1px solid #ddd;
   color: white;
   border-radius: 1rem;
+  cursor: pointer;
 }
 .flightListContainer .flightInputs .flightForm button:hover {
   background-color: var(--primaryColorLight);
@@ -89,7 +90,7 @@
   box-sizing: border-box;
   float: left;
 }
-.flightListContainer .flightListHeader .duration {
+.flightListContainer .flightListHeader .airport {
   width: 19%;
   font-weight: bold;
   font-size: 13px;
@@ -155,7 +156,7 @@
   vertical-align: middle;
   font-size: var(--smallestFontSize);
 }
-.flightListContainer .flightListMonths .flightMonth ul .monthItem .itemDuration {
+.flightListContainer .flightListMonths .flightMonth ul .monthItem .itemAirport {
   box-sizing: border-box;
   display: table-cell;
   float: left;
@@ -233,15 +234,15 @@
     position: absolute;
     top: -16px;
   }
-  .flightListContainer .flightListMonths .flightMonth ul .monthItem .itemDuration {
+  .flightListContainer .flightListMonths .flightMonth ul .monthItem .itemAirport {
     width: 30%;
     line-height: 1.1em !important;
     position: relative;
     text-align: left;
     padding: 0 0.5em;
   }
-  .flightListContainer .flightListMonths .flightMonth ul .monthItem .itemDuration::before {
-    content: "Duration:";
+  .flightListContainer .flightListMonths .flightMonth ul .monthItem .itemAirport::before {
+    content: "Airport:";
     color: #979797;
     display: block;
     font-size: 12px;
@@ -310,15 +311,15 @@
     position: absolute;
     top: -16px;
   }
-  .flightListContainer .flightListMonths .flightMonth ul .monthItem .itemDuration {
+  .flightListContainer .flightListMonths .flightMonth ul .monthItem .itemAirport {
     width: 30%;
     line-height: 1.1em !important;
     position: relative;
     text-align: left;
     padding: 0 0.5em;
   }
-  .flightListContainer .flightListMonths .flightMonth ul .monthItem .itemDuration::before {
-    content: "Duration:";
+  .flightListContainer .flightListMonths .flightMonth ul .monthItem .itemAirport::before {
+    content: "Airport:";
     color: #979797;
     display: block;
     font-size: 12px;
@@ -368,9 +369,9 @@
   .flightListContainer .flightListMonths .flightMonth ul .monthItem .itemDate {
     font-size: var(--normalFontSize);
   }
-  .flightListContainer .flightListMonths .flightMonth ul .monthItem .itemDuration {
+  .flightListContainer .flightListMonths .flightMonth ul .monthItem .itemAirport {
     font-size: var(--normalFontSize);
-    padding-left: 2rem;
+    padding-left: 0;
   }
   .flightListContainer .flightListMonths .flightMonth ul .monthItem .itemPrice {
     font-size: var(--normalFontSize);

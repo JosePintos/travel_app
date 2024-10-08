@@ -1,39 +1,13 @@
-import { createClient } from "contentful";
-import dotenv from "dotenv";
-
-dotenv.config();
+import axios from "axios";
 
 const useContentful = () => {
-  const client = createClient({
-    space: process.env.CONTENTFUL_SPACE,
-    accessToken: process.env.CONTENTFUL_TOKEN,
-  });
-
-  const getDestinationDetails = async (destinationName) => {
+  const getDestinationDetails = async (destName) => {
     try {
-      const specificDestination = await client.getEntries({
-        content_type: "destinationDetails",
-        select: "fields",
-      });
-
-      if (
-        !specificDestination.items ||
-        specificDestination.items.length === 0
-      ) {
-        throw new Error("No destinations found");
-      }
-
-      const filteredEntry = specificDestination.items.find((item) =>
-        item.fields.destinationName?.toLowerCase().includes(destinationName)
+      const attractionDetails = await axios.get(
+        "http://localhost:3000/content/attraction_content",
+        { params: { destinationName: destName } }
       );
-
-      if (!filteredEntry) {
-        throw new Error(
-          `No destination found with the name ${destinationName}`
-        );
-      }
-
-      return filteredEntry.fields;
+      return attractionDetails.data;
     } catch (error) {
       console.log(`Error fetching destination details: ${error}`);
       throw error;

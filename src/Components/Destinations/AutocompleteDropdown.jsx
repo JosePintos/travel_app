@@ -1,12 +1,17 @@
 import { useState, useRef, useEffect } from "react";
 import "./Destinations.css";
 
-const AutocompleteDropdown = ({ suggestions, setSelection }) => {
+const AutocompleteDropdown = ({
+  suggestions,
+  setSelection,
+  handleInputChange,
+  placeholder,
+}) => {
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
   const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [inputValue, setInputValue] = useState("");
-  console.log(suggestions);
+
   const activeSuggestionRef = useRef(null);
 
   const handleChange = (e) => {
@@ -19,6 +24,7 @@ const AutocompleteDropdown = ({ suggestions, setSelection }) => {
     setFilteredSuggestions(unLinked);
     setActiveSuggestionIndex(0);
     setShowSuggestions(true);
+    handleInputChange(userInput);
   };
 
   const handleClick = (e) => {
@@ -70,7 +76,7 @@ const AutocompleteDropdown = ({ suggestions, setSelection }) => {
   }, [activeSuggestionIndex]);
 
   const SuggestionsListComponent = () => {
-    return filteredSuggestions.length ? (
+    return filteredSuggestions.length > 0 ? (
       <ul className="suggestions">
         {filteredSuggestions.map((suggestion, index) => {
           let className;
@@ -97,16 +103,16 @@ const AutocompleteDropdown = ({ suggestions, setSelection }) => {
   };
 
   return (
-    <>
+    <div className="autocompleteWrapper">
       <input
         type="text"
         onChange={handleChange}
         value={inputValue}
         onKeyDown={handleKeyDown}
-        placeholder="Location"
+        placeholder={placeholder}
       />
       {showSuggestions && inputValue && <SuggestionsListComponent />}
-    </>
+    </div>
   );
 };
 

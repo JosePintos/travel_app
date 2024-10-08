@@ -62,7 +62,6 @@ const Destinations = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log(filters);
         setLoading(true);
         const destinations = await axios.get(
           "http://localhost:3000/destinations",
@@ -172,6 +171,7 @@ const Destinations = () => {
                 suggestions={touristCountries}
                 className="autocomplete"
                 setSelection={updateFilters}
+                placeholder={"Location"}
               />
             </div>
 

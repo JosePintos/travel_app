@@ -1,33 +1,58 @@
 import { Request, Response } from "express";
-import { formatAutocompleteLocation } from "../helpers/helpers";
-import axios from "axios";
-import dotenv from "dotenv";
-import path from "path";
-
-dotenv.config({ path: path.resolve(__dirname, "../../../.env") });
+import {
+  getCityCountryListService,
+  searchFlightsService,
+  getCityCode,
+} from "../services/flightService";
 
 export const getCityCountryList = async (
   req: Request,
   res: Response
 ): Promise<void> => {
-  const userQuery = req.query.q;
-  if (!userQuery) {
-    res.status(400).send("Query parameter is required");
-  }
   try {
-    const token = process.env.API_AUTOCOMPLETE_TOKEN;
-
-    const response = await axios.get(
-      `https://api.locationiq.com/v1/autocomplete?q=${userQuery}`,
-      {
-        params: { key: `${token}`, tag: "place:city" },
-      }
-    );
-
-    const cities_countries = formatAutocompleteLocation(response.data);
-
+    const userQuery = req.query.q as string;
+    const cities_countries = await getCityCountryListService(userQuery);
     res.json(cities_countries);
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch cities,country", error });
+  }
+};
+
+export const searchFlights = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const currD = new Date();
+    const departureDate = `${currD.getFullYear()}-${currD.getMonth() + 1}`;
+
+    const adults = req.query.adults as string;
+    const origin = await getCityCode(req.query.origin as string);
+    const destination = req.query.destination as string;
+
+    const flights = await searchFlightsService(
+      adults,
+      destination,
+      departureDate,
+      origin
+    );
+
+    res.json(flights);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch flights", error });
+  }
+};
+
+export const fetchEntityId = async (
+  req: Request,
+  res: Response
+): Promise<void> => {
+  try {
+    const queryString = req.query.q as string;
+    const id = await getCityCode(queryString);
+
+    res.json(id);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch flights", error });
   }
 };

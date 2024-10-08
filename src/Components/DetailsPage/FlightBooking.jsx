@@ -30,38 +30,55 @@ const formatFlightData = (itineraries) => {
   return sanitizedData;
 };
 
-const FlightBooking = () => {
+const FlightBooking = ({ destCode }) => {
   const [flights, setFlights] = useState([]);
+  const [autocompleteSuggestions, setAutocompleteSuggestions] = useState([]);
+  const [originSelection, setOriginSelection] = useState("");
+  const [adultsToFly, setAdultsToFly] = useState(1);
 
-  useEffect(() => {
-    const searchFlights = async (origin, destination, departureDate) => {
+  const currDate = new Date();
+  const month = currDate.toLocaleString("default", { month: "long" });
+
+  const searchFlights = async (e) => {
+    e.preventDefault();
+    if (!originSelection) {
+      return;
+    }
+    const city = originSelection?.location.split(",");
+
+    try {
+      const response = await axios.get(
+        "http://localhost:3000/flights/search_flights",
+        {
+          params: {
+            adults: adultsToFly,
+            destination: destCode,
+            origin: city[0],
+          },
+        }
+      );
+      setFlights(response.data);
+    } catch (error) {
+      console.error("Error fetching flight data:", error);
+    }
+  };
+
+  const handleInputChange = async (query) => {
+    if (query.length > 2) {
       try {
-        const response = await axios.get("../../../database/flights.json");
-        //   "https://sky-scanner3.p.rapidapi.com/flights/search-one-way",
-        //   {
-        //     headers: {
-        //       "X-RapidAPI-Key":
-        //         "",
-        //       "X-RapidAPI-Host": "sky-scanner3.p.rapidapi.com",
-        //     },
-        //     params: {
-        //       fromEntityId: origin,
-        //       toEntityId: destination,
-        //       departDate: departureDate,
-        //       adults: "1",
-        //       currency: "USD",
-        //       countryCode: "US",
-        //       market: "US",
-        //     },
-        //   }
-
-        setFlights(formatFlightData(response.data.itineraries));
+        // const res = await axios.get(
+        //   `http://localhost:3000/citycountry?q=${query}`
+        // );
+        // setAutocompleteSuggestions(res.data);
+        setAutocompleteSuggestions([
+          "Buenos Aires, Buenos Aires, Argentina",
+          "Buenos Aires, Argentina",
+        ]);
       } catch (error) {
-        console.error("Error fetching flight data:", error);
+        console.error("Error fetching cities:", error);
       }
-    };
-    searchFlights("SFO", "LAX", "2024-09-23");
-  }, []);
+    }
+  };
 
   return (
     <div className="flightListContainer">
@@ -70,25 +87,34 @@ const FlightBooking = () => {
           <form className="flightForm" action="">
             <label htmlFor="origin">From:</label>
             <AutocompleteDropdown
-              suggestions={flights ? flights : []}
-              setSelection={() => console.log("done")}
+              suggestions={autocompleteSuggestions}
+              setSelection={setOriginSelection}
+              handleInputChange={handleInputChange}
+              placeholder={"Enter City"}
             />
             {/* <input type="text" id="origin" name="origin" /> */}
             <label for="people">Adults:</label>
-            <input type="number" id="adults" defaultValue={1} name="adults" />
-            <button type="submit">SEARCH</button>
+            <input
+              type="number"
+              id="adults"
+              value={adultsToFly}
+              name="adults"
+            />
+            <button type="submit" onClick={searchFlights}>
+              SEARCH
+            </button>
           </form>
         </div>
       </div>
       <div>
         <div className="flightListHeader">
           <div className="date">
-            Dates
-            <span className="headerMicro">Start-End</span>
+            Date
+            <span className="headerMicro">Departure</span>
           </div>
-          <div className="duration">
-            Duration
-            <span className="headerMicro">Aprox. Duration</span>
+          <div className="airport">
+            Airport
+            <span className="headerMicro">Start-End</span>
           </div>
           <div className="pricing">
             Price
@@ -98,17 +124,17 @@ const FlightBooking = () => {
         <div className="flightListMonths">
           <div className="flightMonth">
             <div className="monthHeading">
-              <strong>MES</strong>
+              <strong>{month}</strong>
             </div>
             <ul>
               {flights?.map((flight) => (
                 <div>
                   <li className="monthItem">
-                    <div className="itemDate">
-                      {flight.departDate} - {flight.arrDate}
+                    <div className="itemDate">{flight.depDate}</div>
+                    <div className="itemAirport">
+                      {flight.fromAirport} - {flight.toAirport}
                     </div>
-                    <div className="itemDuration">{flight.duration}</div>
-                    <div className="itemPrice">${flight.price}</div>
+                    <div className="itemPrice">{flight.price}</div>
                     <div className="itemButton">
                       <button>Book now!</button>
                     </div>

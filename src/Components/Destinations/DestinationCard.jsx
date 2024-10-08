@@ -5,14 +5,14 @@ import { TiLocation } from "react-icons/ti";
 const DestinationCard = ({ destination }) => {
   const navigate = useNavigate();
 
-  const handleClick = (slug) => {
-    navigate(`/details/${slug}`);
+  const handleClick = (slug, cityCode) => {
+    navigate(`/details/${cityCode}/${slug}`);
   };
 
   return (
     <div
       className="singleDestination"
-      onClick={() => handleClick(destination.slug)}
+      onClick={() => handleClick(destination.slug, destination.cityCode)}
     >
       <div className="imgDiv">
         <img

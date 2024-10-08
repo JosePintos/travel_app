@@ -1,6 +1,5 @@
 import "./Destinations.css";
 import DestinationCard from "./DestinationCard";
-import { useState } from "react";
 
 const SearchResults = ({ results }) => {
   return (
